@@ -21,6 +21,9 @@
       "@public": ["public"],
       "@styles/*": ["src/styles/*"],
       "@styles": ["src/styles"],
+      "@styles/css/*": ["src/styles/css/*"],
+      "@static/*": ["static/*"],
+
       "@redux/*": ["src/redux/*"],
       "@redux": ["src/redux"]
     }
