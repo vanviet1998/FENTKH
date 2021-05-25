@@ -8,22 +8,30 @@
     "start": "next start"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.4.0",
+    "@ant-design/icons": "^4.6.2",
+    "@babel/core": "^7.14.2",
     "@reduxjs/toolkit": "^1.5.0",
     "@zeit/next-css": "^1.0.1",
     "antd": "^4.10.2",
-    "bootstrap": "^5.0.0",
+    "axios": "^0.21.1",
+    "bootstrap": "^5.0.1",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
     "jquery-ui-dist": "^1.12.1",
     "next": "10.2.0",
     "next-compose-plugins": "^2.2.1",
+    "next-i18next": "^8.3.0",
     "owl.carousel": "^2.3.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.2",
+    "reflect-metadata": "^0.1.13",
     "reset-css": "^5.0.1",
-    "sass": "^1.32.5"
+    "sass": "^1.32.5",
+    "tsyringe": "^4.5.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.14.2",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",

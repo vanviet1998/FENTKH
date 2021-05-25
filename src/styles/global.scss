@@ -7,25 +7,25 @@ body {
     "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-@import 'reset-css';
+// @import 'reset-css';
 @import 'antd/dist/antd.css';
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 @import "./css/animate.scss";
 @import "./css/flex-slider.min.scss";
 @import "./css/font-awesome.scss";
-// import "./css/jquery-ui.scss";
+@import "./css/jquery-ui.scss";
 @import "./css/jquery.fancybox.min.scss";
 @import "./css/magnific-popup.min.scss";
-@import "./css/nice-select.scss";
-@import "./css/niceselect.scss";
+// @import "./css/niceselect.scss";
+// @import "./css/nice-select.scss";
 // import 'owl.carousel/dist/assets/owl.carousel.css';
 // import 'owl.carousel';
 @import "./css/themify-icons.css";
 @import "./css/slicknav.min.scss";
-// import 'reset-css';
-@import "./css/responsive.scss";
-
+@import './css/reset.scss';
+@import "./css/niceselect.scss";
+@import "./css/nice-select.scss";
 /* =====================================
 Template Name: Eshop
 Author Name: Naimur Rahman
@@ -5010,3 +5010,4 @@ Version:1.0
 	End Footer CSS
 ===============================*/
 
+@import "./css/responsive.scss";

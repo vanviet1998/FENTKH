@@ -4,6 +4,7 @@ import Head from 'next/head'
 import "@styles/global.scss";
 import { Provider } from "react-redux";
 import store from "@redux/store";
+import { appWithTranslation } from 'next-i18next'
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -41,11 +42,31 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <script src="/static/js/easing.js"></script>
         {/*  Active JS */}
         <script src="/static/js/active.js"></script>
+        {/** meta */}
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        {/* Title Tag  */}
+        <title>Nội Thất Khánh Huyền</title>
+        {/* Favicon */}
+        <link rel="icon" type="image/png" href="images/favicon.png" />
+        {/* Web Font */}
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet" />
+        {/* StyleSheet */}
+        {/* Preloader */}
+        {/* <div className="preloader">
+          <div className="preloader-inner">
+            <div className="preloader-icon">
+              <span />
+              <span />
+            </div>
+          </div>
+        </div> */}
       </Head>
       <Component {...pageProps} />
-
     </Provider>
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp)

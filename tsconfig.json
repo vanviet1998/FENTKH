@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -14,6 +16,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
+
     "paths": {
       "@components/*": ["src/components/*"],
       "@components": ["src/components"],
@@ -27,7 +30,9 @@
       "@redux/*": ["src/redux/*"],
       "@redux": ["src/redux"]
     }
+    
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+
 }
