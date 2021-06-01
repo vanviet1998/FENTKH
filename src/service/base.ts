@@ -4,11 +4,10 @@ import { Host } from "./host"
 import { injectable, container } from "tsyringe";
 import { DEFAULT_TIMEOUT, METHOD } from "src/constant";
 
-const host = new Host()
 
 export class BaseService {
 
-    private host:string = host.URL
+    private host:string = Host.URL
     private optionalHeaders:object={
         'Authorization': "Bearer " + "JWT",
   }

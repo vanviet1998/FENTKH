@@ -1,4 +1,4 @@
 export class Host{
-    public readonly URL:string = "http://localhost:3000" 
+   static  readonly URL:string = "http://localhost:3001" 
    
 }   

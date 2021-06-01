@@ -26,7 +26,8 @@
       "@styles": ["src/styles"],
       "@styles/css/*": ["src/styles/css/*"],
       "@static/*": ["static/*"],
-
+      "@services/*": ["src/service/*"],
+      "@services": ["src/service"],
       "@redux/*": ["src/redux/*"],
       "@redux": ["src/redux"]
     }

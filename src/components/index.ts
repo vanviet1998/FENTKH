@@ -6,4 +6,5 @@ export { Card } from "./card";
 export { Cards } from "./cards";
 export { Footer } from "./footer";
 export { HotItems } from "./hotItems";
+export { Panel } from "./Panel";
 

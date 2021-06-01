@@ -8,9 +8,11 @@ export class Service {
     private  _method = METHOD
 
     public getProduct = (params:any)=>{
-        return     this._baseService.initApi(METHOD.GET,"/products",undefined,params,true)
+        return     this._baseService.initApi(this._method.GET,"/product",undefined,params,true)
     }
-
+    public getAllPanel = (params?:any)=>{
+        return     this._baseService.initApi(this._method.GET,"/panel",undefined,params,true)
+    }
 }
 
 export const service = new Service()
