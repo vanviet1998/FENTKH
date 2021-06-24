@@ -1,4 +1,7 @@
-export class Host{
-   static  readonly URL:string = "http://localhost:3001" 
-   
-}   
+export class Host {
+   static readonly URL: string = "https://ntkhbackend.herokuapp.com"
+   static readonly getImageUrl = (id) => {
+      return `https://drive.google.com/uc?export=view&id=${id}`
+
+   }
+}

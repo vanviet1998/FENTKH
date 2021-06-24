@@ -16,8 +16,8 @@ export const Panel: React.FC = () => {
 
     // service
     service.getAllPanel().then(data => {
-      const panelRight = data.result.find(v => v.type)
-      const newPanel = data.result.filter(v => !v.type)
+      const panelRight = (data?.result || []).find(v => v.type)
+      const newPanel = (data?.result || []).filter(v => !v.type)
       setpanelRight(panelRight)
       setpanel(newPanel)
     })
@@ -28,7 +28,7 @@ export const Panel: React.FC = () => {
     <div>
       <section className="hero-slider">
         {/* Single Slider */}
-        <div className="single-slider" style={{backgroundImage:`url(${Host.URL}/${panelRight.image[0]})`}}>
+        <div className="single-slider" style={{backgroundImage:`url(${Host.getImageUrl(panelRight.image[0])})`}}>
           <div className="container">
             <div className="row no-gutters">
 
@@ -60,7 +60,7 @@ export const Panel: React.FC = () => {
               panel.map(v => (
                 <div className="col-lg-4 col-12">
                   <div style={{ height: 300 }} className="single-banner tab-height">
-                    <img src={`${Host.URL}/${v.image[0]}`} alt="#" />
+                    <img src={`${Host.getImageUrl(v.image[0])}`} alt="#" />
                     <div className="content">
                       <p>{v.title}</p>
                       <h3>{v.name}</h3>

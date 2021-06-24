@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AppProps } from "next/app";
 import Head from 'next/head'
 import "@styles/global.scss";
 import { Provider } from "react-redux";
 import store from "@redux/store";
 import { appWithTranslation } from 'next-i18next'
+import Router from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+  // const [loading, setloading] = useState(false)
+  // const setNhe = (variable) => {
+  //   console.log("con cec", variable)
+  // }
+  // useEffect(() => {
+  //   Router.events.on("routeChangeStart", setloading(true));
+  //   Router.events.on("routeChangeComplete", setloading(false));
+  //   Router.events.on("routeChangeError", setloading(false));
+  // }, [])
+
   return (
     <Provider store={store}>
       <Head>
@@ -55,14 +66,14 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet" />
         {/* StyleSheet */}
         {/* Preloader */}
-        {/* <div className="preloader">
+        {/* {loading && <div className="preloader">
           <div className="preloader-inner">
             <div className="preloader-icon">
               <span />
               <span />
             </div>
           </div>
-        </div> */}
+        </div>} */}
       </Head>
       <Component {...pageProps} />
     </Provider>

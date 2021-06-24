@@ -7,4 +7,7 @@ export { Cards } from "./cards";
 export { Footer } from "./footer";
 export { HotItems } from "./hotItems";
 export { Panel } from "./Panel";
+export { Products } from "./products";
+export { Loading } from "./loading";
+export { ProductDetail } from "./productDetail";
 
