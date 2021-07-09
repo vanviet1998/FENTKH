@@ -5,7 +5,6 @@ import { INFORMATION_SHOP } from "src/constant";
 
 export const HotItems: React.FC = () => {
   const { t } = useTranslation("header")
-  console.log("🚀 ~ file: index.tsx ~ line 8 ~ t", )
 
   return (
     <div className="product-area most-popular section">

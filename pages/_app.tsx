@@ -5,18 +5,19 @@ import "@styles/global.scss";
 import { Provider } from "react-redux";
 import store from "@redux/store";
 import { appWithTranslation } from 'next-i18next'
-import Router from "next/router";
+import Router, { useRouter } from 'next/router';
+import NProgress from 'nprogress';
+
+Router.events.on('routeChangeStart', (url) => {
+  NProgress.start()
+})
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-  // const [loading, setloading] = useState(false)
-  // const setNhe = (variable) => {
-  //   console.log("con cec", variable)
-  // }
-  // useEffect(() => {
-  //   Router.events.on("routeChangeStart", setloading(true));
-  //   Router.events.on("routeChangeComplete", setloading(false));
-  //   Router.events.on("routeChangeError", setloading(false));
-  // }, [])
+
+
+
 
   return (
     <Provider store={store}>
@@ -30,7 +31,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         {/*  Bootstrap JS */}
         <script src="/static/js/bootstrap.min.js"></script>
         {/*  Color JS */}
-        <script src="/static/js/colors.js"></script>
+        {/* <script src="/static/js/colors.js"></script> */}
         {/*  Slicknav JS */}
         <script src="/static/js/slicknav.min.js"></script>
         {/*  Owl Carousel JS */}
@@ -64,6 +65,8 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <link rel="icon" type="image/png" href="images/favicon.png" />
         {/* Web Font */}
         <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="/static/css/nprogress.scss" />
+
         {/* StyleSheet */}
         {/* Preloader */}
         {/* {loading && <div className="preloader">

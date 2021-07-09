@@ -6,11 +6,10 @@ import { Header, Main, Cards, Footer, Panel, Products } from "@components";
 import { service } from '@services';
 import { convertToTreeData } from 'src/until';
 
-const Home: React.FC<any> = ({ categorys }) => {
+const ProductPage: React.FC<any> = ({ categorys }) => {
   return (
     <div>
       <Header categorys={categorys} />
-      <Panel />
       {/* End Small Banner */}
       {/* Start Product Area */}
 
@@ -42,4 +41,5 @@ export const getStaticProps = async ({ locale }) => {
     },
   }
 }
-export default Home;
+
+export default ProductPage;

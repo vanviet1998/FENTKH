@@ -11,3 +11,12 @@ export const fetchAllProduct = createAsyncThunk(
 
     }
 )
+export const searchAllProduct = createAsyncThunk(
+    'product/searchfetchAll',
+    async (params:IParamsPage | undefined) => {
+            const response = await service.getProduct(params)
+            return response
+     
+
+    }
+)

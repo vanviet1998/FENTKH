@@ -4,6 +4,6 @@ import { ButtonProps } from "antd/lib/button";
 
 export type IButton = ButtonProps;
 
-export const Button: React.FC<IButton> = ({ ...rest }) => {
-  return <BaseButton {...rest} />;
+export const Button: React.FC<IButton> = ({ className,...rest }) => {
+  return <BaseButton {...rest} className={className?className : "btn animate"}/>;
 };

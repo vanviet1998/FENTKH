@@ -16,7 +16,7 @@ export const Panel: React.FC = () => {
 
     // service
     service.getAllPanel().then(data => {
-      const panelRight = (data?.result || []).find(v => v.type)
+      const panelRight = (data?.result || []).find(v => v.type) || []
       const newPanel = (data?.result || []).filter(v => !v.type)
       setpanelRight(panelRight)
       setpanel(newPanel)

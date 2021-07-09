@@ -2,7 +2,7 @@ import { ICategory } from "./ICategory";
 import { IMaterial } from "./IMaterial";
 
 export interface IProduct {
-    _id:string,
+    _id:string;
     category: ICategory[];
     image: string[];
     color:string[];
@@ -15,6 +15,7 @@ export interface IProduct {
     material:IMaterial;
     price:number;
     disCount:number;
+    slug:string;
 
 }
 export  const intitalIProduct: IProduct = {
@@ -34,4 +35,5 @@ export  const intitalIProduct: IProduct = {
     },
     price:0,
     disCount:0,
+    slug:""
 }

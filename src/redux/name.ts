@@ -1,0 +1,1 @@
+export const FETCH_ALL_PRODUCT : string = "FETCH_ALL_PRODUCT"

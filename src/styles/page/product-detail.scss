@@ -1,8 +1,23 @@
 .product-detail{
-    span{
+    .title{
         font-weight: 500;
         line-height: 1.5rem;
         font-size: 1.25rem;
         word-wrap: break-word;
+    }
+    .blur{
+        color: #757575;
+        width: 110px;
+    }
+    .description{
+        margin-bottom: 12px;
+        .ant-input{
+            display: inline-block;
+            width: 70px;
+            text-align: center;
+        }
+    }
+    .product-content{
+        margin-bottom: 24px;
     }
 }

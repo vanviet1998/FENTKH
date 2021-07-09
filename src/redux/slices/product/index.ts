@@ -2,7 +2,7 @@ import { intitleIPage, IPage } from './../../../constant/IPage';
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { intitalIProduct, IProduct } from "src/constant/IProduct"
 import { IBaseRedux, intitalIBaseRedux } from 'src/constant/IBaseRedux';
-import { fetchAllProduct } from './apiThunk';
+import { fetchAllProduct,searchAllProduct } from './apiThunk';
 
 const initialState: IBaseRedux<IPage<IProduct>> = {
     ...intitalIBaseRedux,
@@ -47,7 +47,36 @@ const productSlice = createSlice({
           }
         },
         [`${fetchAllProduct.rejected}`]: (state, action) => {
-          console.log("🚀 ~ file: index.ts ~ line 33 ~ action", action)
+
+          const { requestId } = action.meta
+          if (state.loading  && state.currentRequestId === requestId) {
+            state.loading = false
+            state.error = action.error
+            state.currentRequestId = undefined
+          }
+        },
+        [`${searchAllProduct.pending}`]: (state, action) => {
+
+          if (!state.loading) {
+            state.loading =true
+            state.currentRequestId = action.meta.requestId
+          }
+        },
+        [`${searchAllProduct.fulfilled}`]: (state, action) => {
+          const { requestId } = action.meta
+          if (state.loading && state.currentRequestId === requestId) {
+            state.loading = false
+            state.currentRequestId = undefined
+            state.data = {
+              ...action.payload,
+              result:[
+                ...action.payload.result,
+                
+              ]
+            }
+          }
+        },
+        [`${searchAllProduct.rejected}`]: (state, action) => {
 
           const { requestId } = action.meta
           if (state.loading  && state.currentRequestId === requestId) {
