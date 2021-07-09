@@ -24,57 +24,66 @@ const ProductPage: React.FC<any> = ({ categorys }) => {
         {
             title: 'Hình',
             dataIndex: 'image',
-            key: 'name',
+            key: '_id',
             render: text => <Avatar src={Host.getImageUrl(text)} size={60} shape="square"></Avatar>
         },
         {
             title: 'Tên Sản Phẩm',
             dataIndex: 'name',
-            key: 'name',
-            render: text => <a>{text}</a>,
+            key: '_id',
+            render: (text, record) =>
+                <Tag>
+                    <a
+                        onClick={(() => router.push(PATH.PRODUCT_DETAIL.replace(":id", record.slug)))}
+                    >
+                        {text}
+                    </a>
+
+                </Tag>,
         },
         {
             title: 'Số Lượng',
             dataIndex: 'amount',
-            key: 'amount',
-            render: (text,record) => 
-            <UIInput
-            min={0}
-            onChange={(e)=>{
-                
-                const amount =  +e.target.value
-                if(amount<0) return
-                const variable:IAddAmountItemCard={
-                    id:record._id,
-                    amount:amount
-                }
-                dispatch(addAmountToItemCards(variable))
-            }} value={text} type="number" style={{ width: 60 }} />,
-    
+            key: '_id',
+            render: (text, record) =>
+                <UIInput
+                    min={0}
+                    onChange={(e) => {
+                        const amount = +e.target.value
+                        if (amount < 0) return
+                        const variable: IAddAmountItemCard = {
+                            id: record._id,
+                            amount: amount
+                        }
+                        dispatch(addAmountToItemCards(variable))
+                    }}
+                    value={text}
+                    type="number"
+                    style={{ width: 60,textAlign:"center" }} />,
+
         },
         {
             title: 'Giá Tiền',
             dataIndex: 'price',
-            key: 'price',
+            key: '_id',
             render: text => <p>{formatPrice(text)}</p>,
-    
+
         },
         {
             title: 'Tổng',
             dataIndex: 'total',
-            key: 'total',
+            key: '_id',
             render: text => <p>{formatPrice(text)}</p>,
-    
+
         },
         {
-            title: 'Action',
-            key: 'action',
+            title: '',
+            key: '_id',
             render: (text, record) => (
                 <Space size="middle">
-                    <Button onClick={()=>{
-                        console.log(record)
+                    <Button onClick={() => {
                         dispatch(removeItemToCard(record._id))
-                    }}>Delete</Button>
+                    }}>Xóa</Button>
                 </Space>
             ),
         },
@@ -90,6 +99,11 @@ const ProductPage: React.FC<any> = ({ categorys }) => {
             <Header categorys={categorys} />
             <div className="container" style={{ minHeight: "100vh" }}>
                 <div className="row">
+                <div className="col-12">
+                        <div style={{ marginTop:24, marginBottom: 24 }} className="section-title">
+                            <h2>Giỏ Hàng    </h2>
+                        </div>
+                    </div>
                     <div className="col-24">
                         <div style={{ margin: 16 }}>
                             <h3 style={{ textAlign: "center", fontSize: 19, marginBottom: 16 }}>Bạn có tất cả {(cards?.data?.cards || []).length} sản phẩm trong giỏ hàng</h3>
@@ -97,6 +111,7 @@ const ProductPage: React.FC<any> = ({ categorys }) => {
                                 columns={columns}
                                 dataSource={(cards?.data?.cards || [])}
                                 pagination={false}
+                                key={"_id"}
                                 summary={() => (
                                     <Table.Summary.Row>
                                         <Table.Summary.Cell index={0}></Table.Summary.Cell>
@@ -117,9 +132,9 @@ const ProductPage: React.FC<any> = ({ categorys }) => {
                                 alignContent: "center",
                                 width: "100%",
                                 height: 65,
-                                alignItems:"center"
+                                alignItems: "center"
                             }} >
-                                <Button onClick={()=> router.push(PATH.ALL_PRODUCTS)} size={"large"} style={{ marginRight: 16 }}>Tiếp tục mua hàng</Button>
+                                <Button onClick={() => router.push(PATH.ALL_PRODUCTS)} size={"large"} style={{ marginRight: 16 }}>Tiếp tục mua hàng</Button>
                                 <Button size={"large"} style={{ marginRight: 22 }}> Đặt Hàng </Button>
                             </div>
                         </div>

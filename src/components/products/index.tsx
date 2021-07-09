@@ -45,18 +45,18 @@ export const Products: React.FC = () => {
     searchAllproduct({ ...paramsPage, ...querySearch })
   }, [category,q])
   return (
-    <div className="product-area section">
+    <div style={{padding:0}} className="product-area section">
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <div className="section-title">
+            <div style={{marginTop:24,marginBottom:24}} className="section-title">
               <h2>{t('product')}</h2>
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-12">
-            <div className="product-info">
+            <div style={{marginBottom:24}} className="product-info">
               <div className="tab-content" id="myTabContent">
                 {/* Start Single Tab */}
                 <div className="tab-pane fade show active" id="man" role="tabpanel">

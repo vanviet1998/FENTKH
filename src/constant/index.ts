@@ -13,7 +13,8 @@ export enum STATUS_API {
 export enum INFORMATION_SHOP {
     PHONE_NUMBER = "0394655656",
     EMAIL = "noithatkhanhhuyen@gmail.com",
-    LOGO = "https://tunhua.vn/wp-content/uploads/2019/09/tunhua.vn_.png"
+    LOGO = "https://tunhua.vn/wp-content/uploads/2019/09/tunhua.vn_.png",
+    ADDRESS="https://goo.gl/maps/5zXB9dtH4hbP3zMi7"
 
 }
 
@@ -52,7 +53,8 @@ export interface ICardItem {
     disCount: number;
     amount: number,
     total: number,
-    realPrice: number
+    realPrice: number,
+    slug:string,
 }
 
 export interface ICards {

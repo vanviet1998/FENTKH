@@ -11,12 +11,6 @@ const Home: React.FC<any> = ({ categorys }) => {
     <div>
       <Header categorys={categorys} />
       <Panel />
-      {/* End Small Banner */}
-      {/* Start Product Area */}
-
-      {/* End Product Area */}
-
-
       <Products />
       <Footer />
 

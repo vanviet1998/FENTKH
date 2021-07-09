@@ -95,7 +95,7 @@ export class CardStore {
       const resuilt = price - (price * sale / 100)
       return resuilt
    }
-   private caculatorAllAmount(cards: ICards): number {
+   private caculatorAllTotal(cards: ICards): number {
       const total: number = cards.cards.reduce((acc, curr) => {
          return acc + curr.total
       }, 0
@@ -103,10 +103,9 @@ export class CardStore {
       return total
    }
    private caulatorAllAmountAndTotal(): void {
-      this.jsonCard.total = this.caculatorAllAmount(this.jsonCard)
+      this.jsonCard.total = this.caculatorAllTotal(this.jsonCard)
    }
    public addItemsToCard(props: IAddItemCard): void {
-      console.log("🚀 ~ file: index.ts ~ line 109 ~ CardStore ~ addItemsToCard ~ props", props)
       const { item, amount } = props
       const itemCard: ICardItem = {
          _id: item._id,
@@ -119,9 +118,7 @@ export class CardStore {
          realPrice: this.caculatorPriceItem(item.price, item.disCount),
          amount,
          total: this.caculatorPriceItem(item.price, item.disCount) * amount,
-
-         // color:item.color,
-
+         slug:item.slug
       }
       if (!this.allCards) {
 
@@ -136,12 +133,12 @@ export class CardStore {
          const index = this.jsonCard.cards.findIndex(v => v._id === item._id)
          if (index === -1) {
             this.jsonCard.cards.push(itemCard)
-            this.jsonCard.total = this.caculatorAllAmount(this.jsonCard)
+            this.jsonCard.total = this.caculatorAllTotal(this.jsonCard)
             this.myStoreCard.setItem(this.jsonCard)
          } else {
             this.jsonCard.cards[index].amount += amount
             this.jsonCard.cards[index].total += this.caculatorPriceItem(item.price, item.disCount) * this.jsonCard.cards[index].amount
-            this.jsonCard.total = this.caculatorAllAmount(this.jsonCard)
+            this.jsonCard.total = this.caculatorAllTotal(this.jsonCard)
 
             this.myStoreCard.setItem(this.jsonCard)
          }
@@ -150,15 +147,14 @@ export class CardStore {
 
    public addAmountToItemCards(props: IAddAmountItemCard) {
       const { id, amount } = props
-      console.log("🚀 ~ file: index.ts ~ line 156 ~ CardStore ~ addAmountToItemCards ~ amount", amount)
       const index = this.jsonCard.cards.findIndex(v => v._id === id)
       if (index === -1) {
-         return
+         
       } else {
          const item = this.jsonCard.cards[index]
          this.jsonCard.cards[index].amount = amount
          this.jsonCard.cards[index].total = this.caculatorPriceItem(item.price, item.disCount) * amount
-         this.jsonCard.total = this.caculatorAllAmount(this.jsonCard)
+         this.jsonCard.total = this.caculatorAllTotal(this.jsonCard)
          this.myStoreCard.setItem(this.jsonCard)
       }
    }
@@ -171,7 +167,7 @@ export class CardStore {
       const newCards = this.jsonCard.cards.filter(v => v._id !== _id)
       if (!newCards) this.myStoreCard.setItem(null)
       this.jsonCard.cards = newCards
-      this.jsonCard.total = this.caculatorAllAmount(this.jsonCard)
+      this.jsonCard.total = this.caculatorAllTotal(this.jsonCard)
       this.myStoreCard.setItem(this.jsonCard)
    }
    public removeAllToCard(): void {

@@ -57,8 +57,8 @@ export const Panel: React.FC = () => {
         <div className="container-fluid">
           <div className="row">
             {
-              panel.map(v => (
-                <div className="col-lg-4 col-12">
+              panel.map((v,index) => (
+                <div key={index} className="col-lg-4 col-12">
                   <div style={{ height: 300 }} className="single-banner tab-height">
                     <img src={`${Host.getImageUrl(v.image[0])}`} alt="#" />
                     <div className="content">

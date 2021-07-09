@@ -209,6 +209,7 @@ Project-name:NTKH v1.1
 	padding: 13px 32px;
 	border-radius: 0px;
 	text-transform: uppercase;
+	width: auto;
 }
 .btn:hover {
 	color: #fff;
@@ -217,6 +218,8 @@ Project-name:NTKH v1.1
 .activeBtn {
 	color: #fff;
 	background: #f7941d;
+	text-transform: uppercase;
+
 }
 #scrollUp {
 	right: 10px;
@@ -1774,7 +1777,7 @@ Project-name:NTKH v1.1
 }
 /* Sinlge Product */
 .single-product {
-	margin-top: 50px;
+	
 }
 .single-product .product-img {
 	position: relative;
@@ -2041,6 +2044,11 @@ Project-name:NTKH v1.1
 .single-product .product-content h3 {
 	text-transform: capitalize;
 	line-height: 22px;
+	text-transform: capitalize;
+    line-height: 22px;
+    height: 52px;
+    text-overflow: clip;
+    white-space: inherit;
 }
 .single-product .product-content h3 a {
 	font-size: 14px;
@@ -2616,7 +2624,6 @@ Project-name:NTKH v1.1
 }
 /* Product Tab */
 .shop.single .product-info {
-	margin-top: 50px;
 }
 .shop.single .nav-tabs {
 	border: none;
@@ -5088,12 +5095,12 @@ Project-name:NTKH v1.1
 	color: white;
 	font-size: 1.5rem;
 	height: 100%;
-    width: 100%;
-    position: fixed;
-    background: aliceblue;
-    left: 0;
-    top: 0;
-    z-index: 100000000;
+	width: 100%;
+	position: fixed;
+	background: aliceblue;
+	left: 0;
+	top: 0;
+	z-index: 100000000;
 
 	.pencil {
 		@keyframes pencil-animation {
@@ -5217,3 +5224,8 @@ Project-name:NTKH v1.1
 }
 @import "./css/responsive.scss";
 @import "./page/product-detail.scss";
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑, "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro",
+		"LiHei Pro", "Heiti TC", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
+}

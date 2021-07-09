@@ -8,7 +8,7 @@ import { fetchAllProduct, searchAllProduct } from "@redux/slices/product/apiThun
 import { intitalParamsPage, IParamsPage } from "src/constant/IParams";
 import { PATH } from "src/constant/path";
 import { Cards } from "@components"
-import { CardStore } from "src/until";
+import { CardStore, makeid } from "src/until";
 import { getAllCard, removeItemToCard, selectAllCards } from "@redux/slices/card";
 import { IBaseRedux } from "src/constant/IBaseRedux";
 const Category: React.FC<any> = ({ data }) => {
@@ -23,15 +23,15 @@ const Category: React.FC<any> = ({ data }) => {
     }
     return data.map((cate) => {
         return cate.children ? (
-            <li key={cate.id}>
+            <li key={makeid(3)}>
                 <a onClick={() => _handleFilterCategory(cate.id)} >{cate.title}
                     <i className="fa fa-angle-right" aria-hidden="true" />
                 </a>
-                <ul key={cate.id} className="sub-category">
+                <ul className="sub-category">
                     <Category data={cate.children} />
                 </ul>
             </li>) : (
-            <li>
+            <li key={makeid(3)}>
                 <a onClick={() => _handleFilterCategory(cate.id)} >{cate.title}</a>
             </li>
         )
@@ -42,13 +42,14 @@ export const Header: React.FC<any> = ({ categorys }) => {
 
     const { t } = useTranslation("header")
     const dispatch = useDispatch()
+    const [url,setUtl] = useState<string>("")
     const [q, setQ] = useState<string | string[]>("")
     const cardsRedux: IBaseRedux<ICards> = useSelector(selectAllCards)
     const cards: ICards = cardsRedux.data
     // const [cards, setCards] = useState<ICards>()
     const RouterNext = useRouter()
 
-    const _handleRemoveItemToCard = (id: string): void =>{
+    const _handleRemoveItemToCard = (id: string): void => {
         dispatch(removeItemToCard(id))
     }
     const _handleChangeSearch = (e) => {
@@ -65,12 +66,13 @@ export const Header: React.FC<any> = ({ categorys }) => {
     const _handleClickLogo = () => {
         RouterNext.push(PATH.HOME)
     }
-    const _handleChangePage=(path)=>{
+    const _handleChangePage = (path) => {
         router.push(path)
 
     }
     useEffect(() => {
         dispatch(getAllCard())
+        setUtl(router.pathname)
 
     }, [])
     return (
@@ -93,7 +95,7 @@ export const Header: React.FC<any> = ({ categorys }) => {
                             {/* Top Right */}
                             <div className="right-content">
                                 <ul className="list-main">
-                                    <li><i className="ti-location-pin" /> {t('store_location')}</li>
+                                    <li> <a href={INFORMATION_SHOP.ADDRESS} target="blank"><i className="ti-location-pin" /> {t('store_location')}</a> </li>
                                     <li><i className="ti-user" /> <a href="#">{t('my_account')}</a></li>
                                     <li><i className="ti-power-off" /><a href="login.html#">{t('login')}</a></li>
                                 </ul>
@@ -139,17 +141,17 @@ export const Header: React.FC<any> = ({ categorys }) => {
                         <div className="col-lg-2 col-md-3 col-12">
                             <div className="right-bar">
                                 {/* Search Form */}
-                                <div className="sinlge-bar">
+                                {/* <div className="sinlge-bar">
                                     <a href="#" className="single-icon"><i className="fa fa-heart-o" aria-hidden="true" /></a>
                                 </div>
                                 <div className="sinlge-bar">
                                     <a href="#" className="single-icon"><i className="fa fa-user-circle-o" aria-hidden="true" /></a>
-                                </div>
+                                </div> */}
                                 <div className="sinlge-bar shopping">
                                     <a href="#" className="single-icon"><i className="ti-bag" /> <span className="total-count">{(cards?.cards || []).length}</span></a>
                                     {/* Shopping Item */}
 
-                                    <Cards cards={cards} handleRemoveItemToCard={(id: string)=>_handleRemoveItemToCard(id)}/>
+                                    <Cards cards={cards} handleRemoveItemToCard={(id: string) => _handleRemoveItemToCard(id)} />
 
                                     {/*/ End Shopping Item */}
                                 </div>
@@ -180,16 +182,15 @@ export const Header: React.FC<any> = ({ categorys }) => {
                                         <div className="navbar-collapse">
                                             <div className="nav-inner">
                                                 <ul className="nav main-menu menu navbar-nav">
-                                                    <li className="active"><a href="#">{t('home')}</a></li>
-                                                    <li><a href="#">{t('product')}</a></li>
+                                                    <li className={url === PATH.HOME && "active"}><a onClick={() => router.push(PATH.HOME)}>{t('home')}</a></li>
+                                                    <li className={url === PATH.ALL_PRODUCTS && "active"}><a onClick={() => router.push(PATH.ALL_PRODUCTS)}>{t('product')}</a></li>
                                                     <li><a href="#">{t('service')}</a></li>
-                                                    <li><a href="#">{t('shop')}<i className="ti-angle-down" /><span className="new">{t('new')}</span></a>
+                                                    <li className={url === PATH.ALL_CARDS && "active"}><a href="#">{t('shop')}<i className="ti-angle-down" /><span className="new">{t('new')}</span></a>
                                                         <ul className="dropdown">
-                                                            <li><a onClick={()=>_handleChangePage(PATH.ALL_CARDS)}>{t('cart')}</a></li>
+                                                            <li><a onClick={() => _handleChangePage(PATH.ALL_CARDS)}>{t('cart')}</a></li>
                                                             <li><a href="checkout.html">{t('checkout')}</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="contact.html">{t('contact_us')}</a></li>
                                                 </ul>
                                             </div>
                                         </div>

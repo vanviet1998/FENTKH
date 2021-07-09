@@ -28,10 +28,10 @@ export const Cards: React.FC<IProps> = (props) => {
       <ul className="shopping-list">
         {
           (cards?.cards || []).map((item, index) => (
-            <li>
+            <li key = {index}>
               <a onClick={()=>handleRemoveItemToCard(item._id)} className="remove" title="Remove this item"><i className="fa fa-remove" /></a>
               <a className="cart-img" href="#"><img src={Host.getImageUrl(item.image)} alt="#" /></a>
-              <h4><a href="#">{item.name}</a></h4>
+              <h4 onClick={()=> router.push(PATH.PRODUCT_DETAIL.replace(":id",item.slug))}><a href="#">{item.name}</a></h4>
               <p className="quantity">{item.amount}x - <span className="amount">{formatPrice(item.total)}</span></p>
             </li>
 

@@ -6,12 +6,18 @@ import { Button } from "@components/button";
 import { UIInput } from "@components/ui";
 import { ShoppingCartOutlined } from "@ant-design/icons"
 import { IProduct } from "src/constant/IProduct";
+import { useDispatch } from "react-redux";
+import { addItemsToCard } from "@redux/slices/card";
+import { IAddItemCard } from "src/constant";
 
 
 export const ProductDetail = ({ product, dataImage = [{ image: "" }] }) => {
     const [item, setItem] = useState<IProduct>(product)
     const [total, setTotal] = useState(1)
     const [activeSize, setActiveSize] = useState("")
+
+    const dispatch = useDispatch()
+
     const _handleOnChangeTotal = (total) => {
         const { value } = total.target
         if (value < 1) {
@@ -21,6 +27,16 @@ export const ProductDetail = ({ product, dataImage = [{ image: "" }] }) => {
         setTotal(value)
 
     }
+
+    const _handleAddCards = () => {
+
+        const payload: IAddItemCard = {
+            item,
+            amount: +total
+        }
+        dispatch(addItemsToCard(payload))
+    }
+
     const _handleChangeSize = (size) => {
         setItem({
             ...item,
@@ -42,11 +58,11 @@ export const ProductDetail = ({ product, dataImage = [{ image: "" }] }) => {
         material = { title: "" }
     } = item || {}
     return (
-        <div style={{ marginBottom: 24 }} className="single-product product-area section product-detail">
+        <div style={{ marginBottom: 24, marginTop: 24, padding: 0 }} className="single-product product-area section product-detail">
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <div className="section-title">
+                        <div style={{ marginBottom: 24 }} className="section-title">
                             <h2>{t('detail_product')}</h2>
                         </div>
                     </div>
@@ -64,7 +80,7 @@ export const ProductDetail = ({ product, dataImage = [{ image: "" }] }) => {
                     </div>
                     <div className="col-7">
                         <div className="">
-                            <span className="title"> {name}</span>
+                            <h1 className="title"> {name}</h1>
                             <div className="product-content" >
                                 {disCount && status ? <div className="product-price">
                                     <span className="sale">{formatPrice(price)}</span>
@@ -91,8 +107,8 @@ export const ProductDetail = ({ product, dataImage = [{ image: "" }] }) => {
                             <div className="description">
                                 <label className="blur">{"Kích Thước"}</label>
                                 {
-                                    (size?.length || []) && size.map(item => (
-                                        <Button className={activeSize === item.options && "activeBtn"} onClick={() => _handleChangeSize(item)} style={{ marginRight: 6 }}>{item.options}</Button>
+                                    (size?.length || []) && size.map((item, index) => (
+                                        <Button key={index} className={activeSize === item.options && "activeBtn"} onClick={() => _handleChangeSize(item)} style={{ marginRight: 6 }}>{item.options}</Button>
 
                                     ))
                                 }
@@ -102,7 +118,7 @@ export const ProductDetail = ({ product, dataImage = [{ image: "" }] }) => {
                                 <UIInput value={total} onChange={_handleOnChangeTotal} type="number" min={1} width="30px" />
                             </div>
                         </div>
-                        <Button icon={<ShoppingCartOutlined style={{ fontSize: 20 }} />} style={{ marginRight: 6 }} size="large">Thêm Vào Giỏ Hàng</Button>
+                        <Button onClick={() => _handleAddCards()} icon={<ShoppingCartOutlined style={{ fontSize: 20 }} />} style={{ marginRight: 6 }} size="large">Thêm Vào Giỏ Hàng</Button>
                         <Button size="large">Mua Ngay</Button>
 
                     </div>
