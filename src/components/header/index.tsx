@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from 'next-i18next'
-import { ICards, INFORMATION_SHOP } from "src/constant";
+import { CONFIG, ICards, INFORMATION_SHOP } from "src/constant";
 import router, { useRouter } from "next/router";
 import queryString, { ParsedQuery } from "query-string"
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,8 @@ import { Cards } from "@components"
 import { CardStore, makeid } from "src/until";
 import { getAllCard, removeItemToCard, selectAllCards } from "@redux/slices/card";
 import { IBaseRedux } from "src/constant/IBaseRedux";
+import MessengerCustomerChat from 'react-messenger-customer-chat';
+
 const Category: React.FC<any> = ({ data }) => {
     const _handleFilterCategory = (id) => {
         router.push({
@@ -42,7 +44,7 @@ export const Header: React.FC<any> = ({ categorys }) => {
 
     const { t } = useTranslation("header")
     const dispatch = useDispatch()
-    const [url,setUtl] = useState<string>("")
+    const [url, setUtl] = useState<string>("")
     const [q, setQ] = useState<string | string[]>("")
     const cardsRedux: IBaseRedux<ICards> = useSelector(selectAllCards)
     const cards: ICards = cardsRedux.data
@@ -77,6 +79,11 @@ export const Header: React.FC<any> = ({ categorys }) => {
     }, [])
     return (
         <header className="header shop">
+            <MessengerCustomerChat
+                pageId={CONFIG.PAGE_ID_FB}
+                appId={CONFIG.APP_ID_FB}
+                // htmlRef="<REF_STRING>"
+            />
             {/* Topbar */}
             <div className="topbar">
                 <div className="container">

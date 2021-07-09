@@ -10,6 +10,12 @@ export enum STATUS_API {
     PENDING = "pending"
 }
 
+export enum CONFIG{
+    PAGE_ID_FB="1450163871929158",
+    APP_ID_FB="832149600760730"
+
+}
+
 export enum INFORMATION_SHOP {
     PHONE_NUMBER = "0394655656",
     EMAIL = "noithatkhanhhuyen@gmail.com",
