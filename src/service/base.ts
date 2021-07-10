@@ -10,7 +10,12 @@ export class BaseService {
   private optionalHeaders: object = {
     'Authorization': "Bearer " + "JWT",
   }
-  public initApi = (method?: METHOD, url?: string, body?: any, params?: any, auth?: boolean):Promise<any> => {
+  constructor(host?: string) {
+    if (host)
+      this.host = host
+
+  }
+  public initApi = (method?: METHOD, url?: string, body?: any, params?: any, auth?: boolean): Promise<any> => {
     const options: object = auth ? this.optionalHeaders : {}
     return axios({
       baseURL: this.host,

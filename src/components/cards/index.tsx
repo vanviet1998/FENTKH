@@ -44,7 +44,7 @@ export const Cards: React.FC<IProps> = (props) => {
           <span>{t('total')}</span>
           <span className="total-amount">{formatPrice(cards?.total || 0)}</span>
         </div>
-        <a href="checkout.html" className="btn animate">{t('checkout')}</a>
+        <a  className="btn animate" onClick={()=> router.push(PATH.FEED_BACK)}>{t('checkout')}</a>
       </div>
     </div>
   );

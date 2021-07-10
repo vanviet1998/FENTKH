@@ -10,4 +10,5 @@ export { Panel } from "./Panel";
 export { Products } from "./products";
 export { Loading } from "./loading";
 export { ProductDetail } from "./productDetail";
+export { MessFB } from "./messFB";
 

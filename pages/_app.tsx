@@ -7,6 +7,7 @@ import store from "@redux/store";
 import { appWithTranslation } from 'next-i18next'
 import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress';
+import { MessFB } from "@components"
 
 Router.events.on('routeChangeStart', (url) => {
   NProgress.start()
@@ -77,7 +78,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             </div>
           </div>
         </div>} */}
+
       </Head>
+      <MessFB />
       <Component {...pageProps} />
     </Provider>
   );

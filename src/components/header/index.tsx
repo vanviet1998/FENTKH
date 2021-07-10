@@ -79,28 +79,6 @@ export const Header: React.FC<any> = ({ categorys }) => {
     }, [])
     return (
         <header className="header shop">
-            <MessengerCustomerChat
-                pageId={CONFIG.PAGE_ID_FB}
-                appId={CONFIG.APP_ID_FB}
-            // htmlRef="<REF_STRING>"
-            />
-
-            <div className="hotline-phone-ring-wrap">
-                <div className="hotline-phone-ring">
-                    <div className="hotline-phone-ring-circle"></div>
-                    <div className="hotline-phone-ring-circle-fill"></div>
-                    <div className="hotline-phone-ring-img-circle">
-                        <a href="tel:0987654321" className="pps-btn-img">
-                            <img src="https://nguyenhung.net/wp-content/uploads/2019/05/icon-call-nh.png" alt="Gọi điện thoại" width="50" />
-                        </a>
-                    </div>
-                </div>
-                <div className="hotline-bar">
-                    <a href="tel:0987654321">
-                        <span className="text-hotline">0394655656</span>
-                    </a>
-                </div>
-            </div>
             {/* Topbar */}
             <div className="topbar">
                 <div className="container">
@@ -206,13 +184,13 @@ export const Header: React.FC<any> = ({ categorys }) => {
                                         <div className="navbar-collapse">
                                             <div className="nav-inner">
                                                 <ul className="nav main-menu menu navbar-nav">
-                                                    <li className={url === PATH.HOME && "active"}><a onClick={() => router.push(PATH.HOME)}>{t('home')}</a></li>
-                                                    <li className={url === PATH.ALL_PRODUCTS && "active"}><a onClick={() => router.push(PATH.ALL_PRODUCTS)}>{t('product')}</a></li>
+                                                    <li className={url === PATH.HOME ? "active":null}><a onClick={() => router.push(PATH.HOME)}>{t('home')}</a></li>
+                                                    <li className={url === PATH.ALL_PRODUCTS ? "active" : null}><a onClick={() => router.push(PATH.ALL_PRODUCTS)}>{t('product')}</a></li>
                                                     <li><a href="#">{t('service')}</a></li>
-                                                    <li className={url === PATH.ALL_CARDS && "active"}><a href="#">{t('shop')}<i className="ti-angle-down" /><span className="new">{t('new')}</span></a>
+                                                    <li className={url === PATH.ALL_CARDS ? "active" : null}><a href="#">{t('shop')}<i className="ti-angle-down" /><span className="new">{t('new')}</span></a>
                                                         <ul className="dropdown">
                                                             <li><a onClick={() => _handleChangePage(PATH.ALL_CARDS)}>{t('cart')}</a></li>
-                                                            <li><a href="checkout.html">{t('checkout')}</a></li>
+                                                            <li><a onClick={() => _handleChangePage(PATH.FEED_BACK)}>{t('checkout')}</a></li>
                                                         </ul>
                                                     </li>
                                                 </ul>

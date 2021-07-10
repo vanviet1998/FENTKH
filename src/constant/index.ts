@@ -1,3 +1,5 @@
+import { Exclude,Expose } from 'class-transformer';
+import { IsArray, IsNumber, IsString } from 'class-validator';
 import { IProduct } from './IProduct';
 export enum METHOD {
     POST = "POST",
@@ -82,4 +84,40 @@ export enum Type_Noti {
     info = "info",
     warning = "warning",
     warn = "warn",
+}
+
+@Exclude()
+export class BodyPayLoadFeedBack{
+    @Expose()
+    @IsString()
+    public name:string;
+
+    @Expose()
+    @IsString()
+    public email:string;
+
+    @Expose()
+    @IsString()
+    public phone:string;
+
+    @Expose()
+    @IsString()
+    public address:string;
+
+    @Expose()
+    @IsString()
+    public province:string;
+
+    @IsString()
+    @Expose()
+    public district:string;
+
+    @IsNumber()
+    @Expose()
+    public total:number;
+
+    @IsArray()
+    @Expose()
+    public cards:ICardItem[];
+
 }
