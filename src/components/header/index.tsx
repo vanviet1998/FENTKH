@@ -101,8 +101,8 @@ export const Header: React.FC<any> = ({ categorys }) => {
                                     <li><h1 style={{color:"#333",fontSize:13,fontWeight:500}}><i className="ti-home" />{INFORMATION_SHOP.NAME_SHOP}</h1> </li>
 
                                     <li> <a href={INFORMATION_SHOP.ADDRESS} target="blank"><i className="ti-location-pin" /> {t('store_location')}</a> </li>
-                                    <li><i className="ti-user" /> <a href="#">{t('my_account')}</a></li>
-                                    <li><i className="ti-power-off" /><a href="login.html#">{t('login')}</a></li>
+                                    <li><i className="ti-user" /> <a>{t('my_account')}</a></li>
+                                    <li><i className="ti-power-off" /><a >{t('login')}</a></li>
                                 </ul>
                             </div>
                             {/* End Top Right */}
@@ -122,7 +122,7 @@ export const Header: React.FC<any> = ({ categorys }) => {
                             {/*/ End Logo */}
                             {/* Search Form */}
                             <div className="search-top">
-                                <div className="top-search"><a href="#0"><i className="ti-search" /></a></div>
+                                <div className="top-search"><a><i className="ti-search" /></a></div>
                                 {/* Search Form */}
                                 <div className="search-top">
                                     <form className="search-form">
@@ -147,13 +147,13 @@ export const Header: React.FC<any> = ({ categorys }) => {
                             <div className="right-bar">
                                 {/* Search Form */}
                                 {/* <div className="sinlge-bar">
-                                    <a href="#" className="single-icon"><i className="fa fa-heart-o" aria-hidden="true" /></a>
+                                    <a className="single-icon"><i className="fa fa-heart-o" aria-hidden="true" /></a>
                                 </div>
                                 <div className="sinlge-bar">
-                                    <a href="#" className="single-icon"><i className="fa fa-user-circle-o" aria-hidden="true" /></a>
+                                    <a className="single-icon"><i className="fa fa-user-circle-o" aria-hidden="true" /></a>
                                 </div> */}
                                 <div className="sinlge-bar shopping">
-                                    <a href="#" className="single-icon"><i className="ti-bag" /> <span className="total-count">{(cards?.cards || []).length}</span></a>
+                                    <a className="single-icon"><i className="ti-bag" /> <span className="total-count">{(cards?.cards || []).length}</span></a>
                                     {/* Shopping Item */}
 
                                     <Cards cards={cards} handleRemoveItemToCard={(id: string) => _handleRemoveItemToCard(id)} />
@@ -189,8 +189,8 @@ export const Header: React.FC<any> = ({ categorys }) => {
                                                 <ul className="nav main-menu menu navbar-nav">
                                                     <li className={url === PATH.HOME ? "active" : null}><a onClick={() => router.push(PATH.HOME)}>{t('home')}</a></li>
                                                     <li className={url === PATH.ALL_PRODUCTS ? "active" : null}><a onClick={() => router.push(PATH.ALL_PRODUCTS)}>{t('product')}</a></li>
-                                                    <li><a href="#">{t('service')}</a></li>
-                                                    <li className={url === PATH.ALL_CARDS ? "active" : null}><a href="#">{t('shop')}<i className="ti-angle-down" /><span className="new">{t('new')}</span></a>
+                                                    <li><a>{t('service')}</a></li>
+                                                    <li className={url === PATH.ALL_CARDS ? "active" : null}><a>{t('shop')}<i className="ti-angle-down" /><span className="new">{t('new')}</span></a>
                                                         <ul className="dropdown">
                                                             <li><a onClick={() => _handleChangePage(PATH.ALL_CARDS)}>{t('cart')}</a></li>
                                                             <li><a onClick={() => _handleChangePage(PATH.FEED_BACK)}>{t('checkout')}</a></li>

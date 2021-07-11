@@ -24,7 +24,7 @@ export const Panel: React.FC<any> = ({panelRight,panel}) => {
                         <h1><span>{panelRight.title}</span>{panelRight.name}</h1>
                         <p>{panelRight.descripsion}</p>
                         <div className="button">
-                          <a href="#" className="btn">Shop Now!</a>
+                          <a className="btn">Shop Now!</a>
                         </div>
                       </div>
                     </div>
@@ -48,7 +48,7 @@ export const Panel: React.FC<any> = ({panelRight,panel}) => {
                     <div className="content">
                       <p>{v.title}</p>
                       <h3>{v.name}</h3>
-                      <a href="#">{v.descripsion}</a>
+                      <a>{v.descripsion}</a>
                     </div>
                   </div>
                 </div>

@@ -60,8 +60,11 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        
         {/* Title Tag  */}
-        <title>Nội Thất Khánh Huyền</title>
+        <title>Cửa Hàng Nội Thất:Nội Thất Khánh Huyền</title>
+        <meta name="description" content="Chuyên cung cấp đồ nội thất giá sỉ lẽ" />
+
         {/* Favicon */}
         <link rel="icon" type="image/png" href="images/favicon.png" />
         {/* Web Font */}
