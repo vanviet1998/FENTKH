@@ -11,7 +11,8 @@ import { PARAMS_PRODUCT_DEFAULT } from "src/constant";
 import queryString from "query-string"
 import {useRouter} from "next/router";
 
-export const Products: React.FC = () => {
+export const Products: React.FC<any> = () => {
+  
   const router = useRouter()
   const { q, category } = router.query
   const { t } = useTranslation("products")
@@ -39,11 +40,12 @@ export const Products: React.FC = () => {
     getAllProducts(nextPage)
 
   }
-  useEffect(() => {
-    const querySearch = queryString.parse(window.location.search)
+ 
+  // useEffect(() => {
+  //   const querySearch = queryString.parse(window.location.search)
 
-    searchAllproduct({ ...paramsPage, ...querySearch })
-  }, [category,q])
+  //   searchAllproduct({ ...paramsPage, ...querySearch })
+  // }, [category,q])
   return (
     <div style={{padding:0}} className="product-area section">
       <div className="container">

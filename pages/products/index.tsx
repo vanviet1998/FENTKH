@@ -1,29 +1,36 @@
 import 'reflect-metadata';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
+import queryString from "query-string"
 import React from "react";
 import { Header, Main, Cards, Footer, Panel, Products } from "@components";
 import { service } from '@services';
 import { convertToTreeData } from 'src/until';
+import { intitalParamsPage } from 'src/constant/IParams';
+import { getAllProducts } from '@redux/actions';
+import { useDispatch } from 'react-redux';
 
-const ProductPage: React.FC<any> = ({ categorys }) => {
+const ProductPage: React.FC<any> = ({ categorys, product }) => {
+  const dispatch = useDispatch()
+    dispatch(getAllProducts(product))
   return (
     <div>
       <Header categorys={categorys} />
-      {/* End Small Banner */}
-      {/* Start Product Area */}
-
-      {/* End Product Area */}
-
-
-      <Products />
+      <Products product={product} />
       <Footer />
 
     </div>
   );
 };
-export const getStaticProps = async ({ locale }) => {
+
+export const getServerSideProps = async (context) => {
+  const payload = {
+    ...intitalParamsPage,
+    q: "",
+    category: "",
+    ...context.query
+  }
   const category = await service.getAllCategory()
+
   const cates = convertToTreeData(category.map(cate => {
     return {
       id: cate._id,
@@ -33,13 +40,10 @@ export const getStaticProps = async ({ locale }) => {
       parent_id: cate.parent_id
     };
   }))
-  return {
-    props: {
-
-      ...await serverSideTranslations(locale, ['header', 'products']),
-      categorys: cates
-    },
-  }
-}
-
+  const product = await service.getProduct(payload)
+  return { props: { 
+    ...await serverSideTranslations(context.locale, ['header', 'products']),
+    product:product,
+    categorys: cates } };
+};
 export default ProductPage;

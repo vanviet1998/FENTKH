@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "ngrok": "ngrok http 3000"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",

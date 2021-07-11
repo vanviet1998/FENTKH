@@ -28,9 +28,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <script src="/static/js/jquery-migrate-3.0.0.js"></script>
         <script src="/static/js/jquery-ui.min.js"></script>
         {/*  Popper JS */}
-        <script src="/static/js/popper.min.js"></script>
+        {/* <script src="/static/js/popper.min.js"></script> */}
         {/*  Bootstrap JS */}
-        <script src="/static/js/bootstrap.min.js"></script>
+        {/* <script src="/static/js/bootstrap.min.js"></script> */}
         {/*  Color JS */}
         {/* <script src="/static/js/colors.js"></script> */}
         {/*  Slicknav JS */}

@@ -23,7 +23,7 @@ const Category: React.FC<any> = ({ data }) => {
             }
         })
     }
-    return data.map((cate) => {
+    return (data || []).map((cate) => {
         return cate.children ? (
             <li key={makeid(3)}>
                 <a onClick={() => _handleFilterCategory(cate.id)} >{cate.title}
@@ -73,9 +73,10 @@ export const Header: React.FC<any> = ({ categorys }) => {
 
     }
     useEffect(() => {
+        const querySearch = queryString.parse(window.location.search)
         dispatch(getAllCard())
         setUtl(router.pathname)
-
+        setQ(querySearch?.q || "")
     }, [])
     return (
         <header className="header shop">
@@ -97,6 +98,8 @@ export const Header: React.FC<any> = ({ categorys }) => {
                             {/* Top Right */}
                             <div className="right-content">
                                 <ul className="list-main">
+                                    <li><h1 style={{color:"#333",fontSize:13,fontWeight:500}}><i className="ti-home" />{INFORMATION_SHOP.NAME_SHOP}</h1> </li>
+
                                     <li> <a href={INFORMATION_SHOP.ADDRESS} target="blank"><i className="ti-location-pin" /> {t('store_location')}</a> </li>
                                     <li><i className="ti-user" /> <a href="#">{t('my_account')}</a></li>
                                     <li><i className="ti-power-off" /><a href="login.html#">{t('login')}</a></li>
@@ -184,7 +187,7 @@ export const Header: React.FC<any> = ({ categorys }) => {
                                         <div className="navbar-collapse">
                                             <div className="nav-inner">
                                                 <ul className="nav main-menu menu navbar-nav">
-                                                    <li className={url === PATH.HOME ? "active":null}><a onClick={() => router.push(PATH.HOME)}>{t('home')}</a></li>
+                                                    <li className={url === PATH.HOME ? "active" : null}><a onClick={() => router.push(PATH.HOME)}>{t('home')}</a></li>
                                                     <li className={url === PATH.ALL_PRODUCTS ? "active" : null}><a onClick={() => router.push(PATH.ALL_PRODUCTS)}>{t('product')}</a></li>
                                                     <li><a href="#">{t('service')}</a></li>
                                                     <li className={url === PATH.ALL_CARDS ? "active" : null}><a href="#">{t('shop')}<i className="ti-angle-down" /><span className="new">{t('new')}</span></a>
